@@ -15,14 +15,38 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.ts$/,
-          loader: 'ts-loader',
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  [
+                    '@babel/preset-env',
+                    {
+                      targets: { safari: 6 },
+                      browserslistEnv: 'safari >= 6',
+                      useBuiltIns: 'entry',
+                      corejs: '3.20',
+                      forceAllTransforms: true,
+                    },
+                  ],
+                ],
+              },
+            },
+            {
+              loader: 'ts-loader',
+              options: {
+                appendTsSuffixTo: [/\.vue$/],
+              },
+            },
+          ],
         },
       ],
     },
   };
 
   if (argv.mode === 'production') {
-    config.devtool = 'none';
+    //config.devtool = 'none';
   }
 
   return config;

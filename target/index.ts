@@ -1,3 +1,6 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 import query from 'licia/query';
 import randomId from 'licia/randomId';
 import safeStorage from 'licia/safeStorage';
@@ -65,7 +68,7 @@ if (!id) {
   sessionStore.setItem('chii-id', id);
 }
 
-const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+const protocol = (location.protocol === 'https:' || (window as any).ChiiWss) ? 'wss:' : 'ws:';
 
 const ws = new Socket(
   `${protocol}//${ChiiServerUrl}/target/${id}?${query.stringify({
