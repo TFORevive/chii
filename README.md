@@ -1,34 +1,10 @@
-[中文](docs/README_CN.md)
-
 # Chii
 
-[![NPM version][npm-image]][npm-url]
-[![Build status][travis-image]][travis-url]
-[![License][license-image]][npm-url]
+Remote web debugging tool, forked from [https://github.com/liriliri/chii](https://github.com/liriliri/chii), using [chrome devtools frontend](https://github.com/ChromeDevTools/devtools-frontend).
 
-[npm-image]: https://img.shields.io/npm/v/chii?style=flat-square 
-[npm-url]: https://npmjs.org/package/chii
-[travis-image]: https://img.shields.io/travis/liriliri/chii?style=flat-square
-[travis-url]: https://travis-ci.org/liriliri/chii
-[license-image]: https://img.shields.io/npm/l/chii?style=flat-square
+Adapted for TFORevive, for usage with the built-in game UI.
 
-Remote debugging tool like [weinre](https://people.apache.org/~pmuellr/weinre/docs/latest/Home.html), replacing web inspector with the latest [chrome devtools frontend](https://github.com/ChromeDevTools/devtools-frontend).
-
-![Chii](./docs/screenshot.jpg)
-
-## Demo
-
-![Demo](./docs/qrcode.png)
-
-Browse it on your phone: [https://chii.liriliri.io/tests/demo.html](https://chii.liriliri.io/tests/demo.html)
-
-Open [https://chii.liriliri.io/](https://chii.liriliri.io/) and click inspect to start debugging the demo page.
-
-In order to try it for different sites, execute the script below on browser address bar.
-
-```javascript
-javascript:(function () { var script = document.createElement('script'); script.src="//chii.liriliri.io/target.js"; document.body.appendChild(script); })();
-```
+![Chii](https://res.liriliri.io/chii/screenshot.jpg)
 
 ## Install
 
@@ -43,18 +19,17 @@ npm install chii -g
 Start the server with the following command.
 
 ```bash
-chii start -p 8080
+chii start -p 8123
 ```
 
-Use this script to inject the target code into your webpage.
+In-game you have to enable it with `uigt_chii 1`. You can also adjust the server URL with the `uigt_chii_server_url` cvar, default is `localhost:8123`.
 
-```html
-<script src="//host-machine-ip:8080/target.js"></script>
-```
+If your pages are already loaded, use the `uigt_reload_all` console command to reload them.
 
-Then browse to localhost:8080 to start debugging your page.
+Then browse to localhost:8123 to start debugging your page.
 
-## Related Projects
+## Demo (outside of game)
 
-* [whistle.chii](https://github.com/liriliri/whistle.chii): Whistle Chii plugin.
-* [chobitsu](https://github.com/liriliri/chobitsu): Chrome devtools protocol JavaScript implementation.
+Browse it on your phone: [https://chii.liriliri.io/test/demo.html](https://chii.liriliri.io/test/demo.html)
+
+Open [https://chii.liriliri.io/](https://chii.liriliri.io/) and click inspect to start debugging the demo page.
